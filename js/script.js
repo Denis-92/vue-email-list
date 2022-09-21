@@ -12,24 +12,27 @@ const app = new Vue(
         el: '#app',
 
         data: {
-            listEmails: []
+            listEmails: [],
+            loading: true
         },
 
-        methods: {
-            generateTenRandomEmail() {
-                for (let i = 0; i < 10; i++) {
-                    axios
-                        .get('https://flynn.boolean.careers/exercises/api/random/mail')
-                        .then((response) => {
-                            if (response.status === 200) {
-                                const randomEmail = response.data.response;
-                                this.listEmails.push(randomEmail);
-                            }
+        mounted() {
+            const NUM_RANDOM_MAILS = 10;
+            for (let i = 0; i < NUM_RANDOM_MAILS; i++) {
+                axios
+                    .get('https://flynn.boolean.careers/exercises/api/random/mail')
+                    .then((response) => {
+                        if (response.status === 200) {
+                            const randomEmail = response.data.response;
+                            this.listEmails.push(randomEmail);
+                            this.loading = this.listEmails.length < NUM_RANDOM_MAILS;
                         }
-                        );
-                }
+                    }
+                    );
             }
+
         }
+
     }
 
 );

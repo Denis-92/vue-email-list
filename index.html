@@ -16,11 +16,16 @@
 
     <div id="app">
 
-        <button @click="generateTenRandomEmail">Generate random emails</button>
-        <div v-for="(email, index) in listEmails">
-            <ul>
-                <li><span> {{ index + 1 }} {{ ' - ' + email }} </span></li>
-            </ul>
+        <!-- <button @click="generateTenRandomEmail">Generate random emails</button> -->
+
+        <div v-if="loading">CARICAMENTO</div>
+
+        <div v-else>
+            <div v-for="(email, index) in listEmails">
+                <ul>
+                    <li><span> {{ index + 1 }} {{ ' - ' + email }} </span></li>
+                </ul>
+            </div>
         </div>
 
     </div>
