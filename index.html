@@ -18,7 +18,7 @@
 
         <!-- <button @click="generateTenRandomEmail">Generate random emails</button> -->
 
-        <div v-if="loading">CARICAMENTO</div>
+        <div v-if="loading">CARICAMENTO {{ loadingStatus }}% </div>
 
         <div v-else>
             <div v-for="(email, index) in listEmails">

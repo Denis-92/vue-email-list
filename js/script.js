@@ -13,12 +13,13 @@ const app = new Vue(
 
         data: {
             listEmails: [],
-            loading: true
+            loading: true,
+            loadingStatus: 0
         },
 
         mounted() {
             const NUM_RANDOM_MAILS = 10;
-            for (let i = 0; i < NUM_RANDOM_MAILS; i++) {
+            for (let i = 1; i <= NUM_RANDOM_MAILS; i++) {
                 axios
                     .get('https://flynn.boolean.careers/exercises/api/random/mail')
                     .then((response) => {
@@ -26,6 +27,8 @@ const app = new Vue(
                             const randomEmail = response.data.response;
                             this.listEmails.push(randomEmail);
                             this.loading = this.listEmails.length < NUM_RANDOM_MAILS;
+                            this.loadingStatus = i / NUM_RANDOM_MAILS * 100;
+                            console.log('caricamento: ' + loadingStatus + '%');
                         }
                     }
                     );
