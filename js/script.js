@@ -28,7 +28,7 @@ const app = new Vue(
                             this.listEmails.push(randomEmail);
                             this.loading = this.listEmails.length < NUM_RANDOM_MAILS;
                             this.loadingStatus = i / NUM_RANDOM_MAILS * 100;
-                            console.log('caricamento: ' + loadingStatus + '%');
+                            console.log('caricamento: ' + this.loadingStatus + '%');
                         }
                     }
                     );
