@@ -23,13 +23,14 @@ const app = new Vue(
                 axios
                     .get('https://flynn.boolean.careers/exercises/api/random/mail')
                     .then((response) => {
+                        console.log(response);
                         if (response.status === 200) {
                             const randomEmail = response.data.response;
                             this.listEmails.push(randomEmail);
                             this.loading = this.listEmails.length < NUM_RANDOM_MAILS;
                             this.loadingStatus = i / NUM_RANDOM_MAILS * 100;
                             console.log('caricamento: ' + this.loadingStatus + '%');
-                        }
+                        } else { i--; }
                     }
                     );
             }
