@@ -33,7 +33,10 @@ const app = new Vue(
                         } else { i--; }
                     }
                     );
-            }
+                    .catch((error) => {
+                        console.log('error', error);
+                    })
+    }
 
         }
 
